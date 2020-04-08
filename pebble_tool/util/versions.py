@@ -6,6 +6,8 @@ _version_parser = re.compile(r"^([0-9]+)(?:\.([0-9]+))?(?:\.([0-9]+))?(?:\-(beta
 
 
 def version_to_key(version):
+    if isinstance(version, bytes):
+        version = version.decode()
     result = _version_parser.match(version)
     if result is None:
         return (0, 0, 0, 0, 0, version)
