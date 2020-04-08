@@ -45,7 +45,7 @@ class ToolAppInstaller(object):
         self.pebble = pebble
         self.pbw = pbw or 'build/{}.pbw'.format(os.path.basename(os.getcwd()))
         self.progress_bar = ProgressBar(widgets=[Percentage(), Bar(marker='=', left='[', right=']'), ' ',
-                                                 FileTransferSpeed(), ' ', Timer(format='%s')])
+                                                 FileTransferSpeed(), ' ', Timer(format='%(elapsed)s')])
 
     def install(self):
         if isinstance(self.pebble.transport, WebsocketTransport):
@@ -55,7 +55,7 @@ class ToolAppInstaller(object):
 
     def _install_via_serial(self, pebble, pbw):
         installer = AppInstaller(pebble, pbw)
-        self.progress_bar.maxval = installer.total_size
+        self.progress_bar.max_value = installer.total_size
         self.progress_bar.start()
         installer.register_handler("progress", self._handle_pp_progress)
         installer.install()

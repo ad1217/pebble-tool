@@ -54,7 +54,7 @@ class ScreenshotCommand(PebbleCommand):
 
     def _handle_progress(self, progress, total):
         if not self.started:
-            self.progress_bar.maxval = total
+            self.progress_bar.max_value = total
             self.started = True
         self.progress_bar.update(progress)
 

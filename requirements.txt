@@ -2,7 +2,7 @@ libpebble2==0.0.26
 enum34==1.0.4
 httplib2==0.9.1
 oauth2client==1.4.12
-progressbar2==2.7.3
+progressbar2==3.50.1
 pyasn1==0.1.8
 pyasn1-modules==0.0.6
 pypng==0.0.17
