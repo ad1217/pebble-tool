@@ -117,8 +117,7 @@ class SDKManager(object):
             subprocess.check_call([sys.executable, "-m", "virtualenv", virtualenv_path])
             print("Installing dependencies...")
             subprocess.check_call([os.path.join(virtualenv_path, "bin", "python"), "-m", "pip", "install", "-r",
-                                   os.path.join(path, "sdk-core", "requirements.txt")],
-                                  env={'PYTHONHOME': virtualenv_path})
+                                   os.path.join(path, "sdk-core", "requirements.txt")])
             package_json = os.path.join(path, "sdk-core", "package.json")
             if os.path.exists(package_json):
                 print("Installing JS dependencies... (this may take a while)")
@@ -263,8 +262,7 @@ subprocess.call([sys.executable, {}] + sys.argv[1:])
         else:
             raise SDKInstallError("Couldn't figure out what requirements to install.")
         subprocess.check_call([os.path.join(env_path, "bin", "python"), "-m", "pip", "install", "-r",
-                               os.path.join(path, "requirements-{}.txt".format(platform))],
-                              env={'PYTHONHOME': env_path, 'PATH': os.environ['PATH']})
+                               os.path.join(path, "requirements-{}.txt".format(platform))])
         if os.path.exists(os.path.join(dest_path, '..', 'node_modules')):
             print("Installing JS dependencies... (this may take a while)")
             invoke_npm(["install", "--silent"], cwd=os.path.join(dest_path, '..'))
